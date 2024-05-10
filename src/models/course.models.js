@@ -1,8 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const courseSchema = new Schema({
-  name: { type: String },
-  deparment: {},
+  title: { type: String, unique: true, required: true },
+  courseNo: { type: String, unique: true, required: true },
+  student: [{ type: Schema.Types.ObjectId, ref: "Student" }],
 });
 
-const Course = mongoose.model("Course", courseSchema);
+export const Course = mongoose.model("Course", courseSchema);
